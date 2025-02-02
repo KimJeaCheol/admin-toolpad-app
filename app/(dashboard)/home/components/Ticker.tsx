@@ -28,5 +28,5 @@ export default function TickerWrapper({
     },
   },
 }: TickerProps) {
-  return <Ticker colorTheme={colorTheme} copyrightStyles={styles} />;
+  return <Ticker colorTheme={colorTheme} />;
 }
