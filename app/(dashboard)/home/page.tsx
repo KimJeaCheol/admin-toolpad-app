@@ -9,7 +9,7 @@ import Stack from "@mui/material/Stack";
 import { styled } from "@mui/material/styles";
 import { TransitionProps } from "@mui/material/transitions";
 import { forwardRef, useState } from "react";
-import ScreenerWrapper from "../screener/components/Screener";
+import ScreenerWrapper from "../components/Screener";
 import EconomicCalendar from "./components/EconomicCalendar";
 import MarketNews from "./components/MarketNews";
 import SectorList from "./components/Sector";

@@ -1,9 +1,9 @@
-import CurrencyBitcoinIcon from "@mui/icons-material/CurrencyBitcoin";
+import CurrencyBitcoinTwoToneIcon from "@mui/icons-material/CurrencyBitcoinTwoTone";
+import CurrencyExchangeTwoToneIcon from "@mui/icons-material/CurrencyExchangeTwoTone";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import HomeIcon from "@mui/icons-material/Home";
-import MapIcon from "@mui/icons-material/Map";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
-import ShowChartIcon from "@mui/icons-material/ShowChart";
+import ShowChartTwoToneIcon from "@mui/icons-material/ShowChartTwoTone";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import type { Navigation } from "@toolpad/core/AppProvider";
 import { NextAppProvider } from "@toolpad/core/nextjs";
@@ -28,23 +28,23 @@ const NAVIGATION: Navigation = [
   },
   {
     segment: "home",
-    title: "Home",
+    title: "홈",
     icon: <HomeIcon />,
   },
   {
-    segment: "screener",
-    title: "Screener",
-    icon: <ShowChartIcon />,
+    segment: "stocks",
+    title: "주식",
+    icon: <ShowChartTwoToneIcon />,
   },
   {
-    segment: "map",
-    title: "Map",
-    icon: <MapIcon />,
+    segment: "forex",
+    title: "외환",
+    icon: <CurrencyExchangeTwoToneIcon />,
   },
   {
     segment: "crypto",
-    title: "Crypto",
-    icon: <CurrencyBitcoinIcon />,
+    title: "암호화",
+    icon: <CurrencyBitcoinTwoToneIcon />,
   },
 ];
 
@@ -67,6 +67,16 @@ export default async function RootLayout({
               navigation={NAVIGATION}
               session={session}
               authentication={AUTHENTICATION}
+              branding={{
+                // logo: (
+                //   <img
+                //     src="https://www.kbanknow.com/resource/img/reform/layout/logo_kbank.png"
+                //     alt="Kbank"
+                //   />
+                // ),
+                title: "Kbank",
+                homeUrl: "/toolpad/core/introduction",
+              }}
             >
               {children}
             </NextAppProvider>

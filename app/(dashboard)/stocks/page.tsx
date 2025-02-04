@@ -4,15 +4,16 @@ import Grid from "@mui/material/Grid2";
 import Stack from "@mui/material/Stack";
 import AdvancedRealTimeChartWrapper from "../components/AdvancedRealTimeChart";
 import CompanyProfileWrapper from "../components/CompanyProfile";
-import CryptoCurrencyMarketWrapper from "../components/CryptoCurrencyMarket";
-import CryptoHeatmapWrapper from "../components/CryptoHeatmap";
+import FundamentalDataWrapper from "../components/FundamentalData";
 import SymbolInfoWrapper from "../components/SymbolInfo";
 import TechnicalAnalysisWrapper from "../components/TechnicalAnalysis";
+import TickerTapeWrapper from "../components/TickerTape";
 import TimelineWrapper from "../components/Timeline";
 
 export default function ScreenerPage() {
   return (
     <Box>
+      <TickerTapeWrapper colorTheme="light" />
       <Box
         sx={{
           justifyContent: "center",
@@ -37,22 +38,22 @@ export default function ScreenerPage() {
               alignItems: "center",
             }}
           >
-            <SymbolInfoWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
+            <SymbolInfoWrapper colorTheme="light" symbol="NASDAQ:AAPL" />
           </Box>
+
           <AdvancedRealTimeChartWrapper
             colorTheme="light"
-            symbol="BITSTAMP:BTCUSD"
+            symbol="NASDAQ:AAPL"
           />
-          <CompanyProfileWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
+          <CompanyProfileWrapper colorTheme="light" symbol="NASDAQ:AAPL" />
+          <FundamentalDataWrapper colorTheme="light" />
           <Stack direction="row" spacing={2}>
             <TechnicalAnalysisWrapper
               colorTheme="light"
-              symbol="BITSTAMP:BTCUSD"
+              symbol="OANDA:EURUSD"
             />
-            <TimelineWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
+            <TimelineWrapper colorTheme="light" symbol="OANDA:EURUSD" />
           </Stack>
-          <CryptoHeatmapWrapper colorTheme="light" />
-          <CryptoCurrencyMarketWrapper colorTheme="light" />
         </Grid>
       </Box>
     </Box>
