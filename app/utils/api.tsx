@@ -26,7 +26,7 @@ export interface SectorPerformance {
 }
 
 const BASE_URL = "http://localhost:3010/api/orders"; // 실제 API URL로 변경
-const FMP_API_KEY = "ywVLzlNZQUBe3anS60CetWk2P1JXK2pO"; // Financial Modeling Prep API 키
+const API_KEY = "ywVLzlNZQUBe3anS60CetWk2P1JXK2pO"; // Financial Modeling Prep API 키
 const FMP_BASE_URL = "https://financialmodelingprep.com/api"; // Financial Modeling Prep API 주소
 
 export const fetchData = async (
@@ -63,7 +63,7 @@ export const fetchBarChartData = async (): Promise<any> => {
 export const fetchStockPrice = async (symbol: string) => {
   try {
     const response = await fetch(
-      `${FMP_BASE_URL}/quote/${symbol}?apikey=${FMP_API_KEY}`
+      `${FMP_BASE_URL}/quote/${symbol}?apikey=${API_KEY}`
     );
     const data = await response.json();
     return data[0]; // 첫 번째 요소가 해당 주식의 정보
@@ -80,7 +80,7 @@ export const fetchStockPrice = async (symbol: string) => {
 export const fetchStockFinancials = async (symbol: string) => {
   try {
     const response = await fetch(
-      `${FMP_BASE_URL}/income-statement/${symbol}?apikey=${FMP_API_KEY}`
+      `${FMP_BASE_URL}/income-statement/${symbol}?apikey=${API_KEY}`
     );
     const data = await response.json();
     return data; // 주어진 회사의 재무제표 리스트 반환
@@ -97,7 +97,7 @@ export const fetchMarketNews = async () => {
   try {
     console.log("fetchMarketNews");
     const response = await fetch(
-      `${FMP_BASE_URL}/v4/general_news?page=0&apikey=${FMP_API_KEY}`
+      `${FMP_BASE_URL}/v4/general_news?page=0&apikey=${API_KEY}`
     );
     const data: NewsItem = await response.json();
     return data; // 뉴스 리스트 반환
@@ -115,7 +115,7 @@ export const fetchSectorPerformance = async (
 ): Promise<SectorPerformance[]> => {
   try {
     const response = await fetch(
-      `https://financialmodelingprep.com/api/v3/sector-performance?apikey=${FMP_API_KEY}`
+      `https://financialmodelingprep.com/api/v3/sector-performance?apikey=${API_KEY}`
     );
     if (!response.ok) {
       throw new Error(`HTTP error! Status: ${response.status}`);
@@ -124,6 +124,81 @@ export const fetchSectorPerformance = async (
     return data;
   } catch (error) {
     console.error("섹터 성과 데이터를 가져오는 중 오류 발생:", error);
+    throw error;
+  }
+};
+
+export const fetchCompanyList = async (
+  params: {
+    marketCapMoreThan?: number;
+    marketCapLowerThan?: number;
+    sector?: string;
+    industry?: string;
+    betaMoreThan?: number;
+    betaLowerThan?: number;
+    priceMoreThan?: number;
+    priceLowerThan?: number;
+    dividendMoreThan?: number;
+    dividendLowerThan?: number;
+    volumeMoreThan?: number;
+    volumeLowerThan?: number;
+    exchange?: string;
+    country?: string;
+    isEtf?: boolean;
+    isFund?: boolean;
+    isActivelyTrading?: boolean;
+    limit?: number;
+    includeAllShareClasses?: boolean;
+  } = {}
+): Promise<any> => {
+  // 기본값 {} 추가하여 undefined 방지
+  try {
+    console.log(
+      "📡 Fetching data from Stock Screener API with params:",
+      params
+    );
+
+    const safeParams = Object.fromEntries(
+      Object.entries(params).filter(
+        ([_, v]) => v !== undefined && v !== null && v !== ""
+      )
+    ); // undefined, null, 빈 문자열 제거
+
+    // 기본 limit 값 설정 (없으면 100)
+    if (!safeParams.limit) {
+      safeParams.limit = 100;
+    }
+
+    const queryParams = new URLSearchParams({
+      ...safeParams,
+      apikey: API_KEY,
+    }).toString();
+
+    const response = await fetch(
+      `https://financialmodelingprep.com/api/v3/stock-screener?${queryParams}`
+    );
+
+    console.log(
+      "🔗 API Request URL:",
+      `https://financialmodelingprep.com/api/v3/stock-screener?${queryParams}`
+    );
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! Status: ${response.status}`);
+    }
+
+    const data = await response.json();
+
+    console.log("✅ API Response Data:", data);
+
+    if (!data || data.length === 0) {
+      console.warn("⚠ No data returned from API.");
+      return [];
+    }
+
+    return data;
+  } catch (error) {
+    console.error("❌ Stock Screener API 호출 실패:", error);
     throw error;
   }
 };
