@@ -2,6 +2,8 @@ import CurrencyBitcoinTwoToneIcon from "@mui/icons-material/CurrencyBitcoinTwoTo
 import CurrencyExchangeTwoToneIcon from "@mui/icons-material/CurrencyExchangeTwoTone";
 import DashboardIcon from "@mui/icons-material/Dashboard";
 import HomeIcon from "@mui/icons-material/Home";
+import NewspaperTwoToneIcon from "@mui/icons-material/NewspaperTwoTone";
+import QueryStatsTwoToneIcon from "@mui/icons-material/QueryStatsTwoTone";
 import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
 import ShowChartTwoToneIcon from "@mui/icons-material/ShowChartTwoTone";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
@@ -26,10 +28,21 @@ const NAVIGATION: Navigation = [
     title: "Orders",
     icon: <ShoppingCartIcon />,
   },
+  { kind: "divider" },
   {
     segment: "home",
     title: "홈",
     icon: <HomeIcon />,
+  },
+  {
+    segment: "news",
+    title: "뉴스",
+    icon: <NewspaperTwoToneIcon />,
+  },
+  {
+    segment: "screener",
+    title: "주식골라보기",
+    icon: <QueryStatsTwoToneIcon />,
   },
   {
     segment: "stocks",

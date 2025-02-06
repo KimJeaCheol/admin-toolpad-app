@@ -37,18 +37,18 @@ export default function ScreenerPage() {
               alignItems: "center",
             }}
           >
-            <SymbolInfoWrapper colorTheme="light" symbol="OANDA:EURUSD" />
+            <SymbolInfoWrapper colorTheme="light" symbol="PEPPERSTONE:USDKRW" />
           </Box>
 
           <AdvancedRealTimeChartWrapper
             colorTheme="light"
-            symbol="OANDA:EURUSD"
+            symbol="PEPPERSTONE:USDKRW"
           />
           <CompanyProfileWrapper colorTheme="light" symbol="OANDA:EURUSD" />
           <Stack direction="row" spacing={2}>
             <TechnicalAnalysisWrapper
               colorTheme="light"
-              symbol="OANDA:EURUSD"
+              symbol="PEPPERSTONE:USDKRW"
             />
             <TimelineWrapper colorTheme="light" symbol="OANDA:EURUSD" />
           </Stack>

@@ -37,17 +37,17 @@ export default function ScreenerPage() {
               alignItems: "center",
             }}
           >
-            <SymbolInfoWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
+            <SymbolInfoWrapper colorTheme="light" symbol="UPBIT:BTCKRW" />
           </Box>
           <AdvancedRealTimeChartWrapper
             colorTheme="light"
-            symbol="BITSTAMP:BTCUSD"
+            symbol="UPBIT:BTCKRW"
           />
           <CompanyProfileWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
           <Stack direction="row" spacing={2}>
             <TechnicalAnalysisWrapper
               colorTheme="light"
-              symbol="BITSTAMP:BTCUSD"
+              symbol="UPBIT:BTCKRW"
             />
             <TimelineWrapper colorTheme="light" symbol="BITSTAMP:BTCUSD" />
           </Stack>

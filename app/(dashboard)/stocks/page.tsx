@@ -48,11 +48,8 @@ export default function ScreenerPage() {
           <CompanyProfileWrapper colorTheme="light" symbol="NASDAQ:AAPL" />
           <FundamentalDataWrapper colorTheme="light" />
           <Stack direction="row" spacing={2}>
-            <TechnicalAnalysisWrapper
-              colorTheme="light"
-              symbol="OANDA:EURUSD"
-            />
-            <TimelineWrapper colorTheme="light" symbol="OANDA:EURUSD" />
+            <TechnicalAnalysisWrapper colorTheme="light" symbol="NASDAQ:AAPL" />
+            <TimelineWrapper colorTheme="light" symbol="NASDAQ:AAPL" />
           </Stack>
         </Grid>
       </Box>
